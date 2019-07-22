@@ -1,0 +1,101 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+
+</head>
+
+<body ng-app="MyApp" ng-controller="MyCtrl" ng-cloak>
+    <div class="container">  
+     
+        <div class="col-sm-3" >
+        <form action="/action_page.php">
+           <b> Name:</b><br>
+            <input type="text" name="name" value=""ng-model="name">
+            <br>
+            <b>eId:</b><br>
+            <input type="text" name="eId" value=""ng-model="eId">
+            <br>
+            <b>Salary:</b><br>
+            <input type="text" name="Sal" value=""ng-model="sal">
+            <br><br>
+            <button type="button" class="btn btn-primary" ng-click="submit()">submit</button>
+          </form>           
+          </div>
+       
+                    
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table table-striped" width="200px" border="1">
+                  <thead class="bg-primary">
+                    <tr>
+                            <th>Slno</th>
+                            <th>Empid</th>
+                            <th ng-click="filter2('name')">Name</th>
+                            <th ng-click="filter1('sal')">Salary</th>
+                            <th>Action</th>
+                            
+                    </tr>
+                  </thead>
+                  <tbody>
+                 <tr ng-repeat="c in employee | orderBy : sort:true">
+                    <td>{{$index+1}}</td>
+                    <td>{{c.eId}}</td>
+                    <td>{{c.name}}</td>
+                     <td>{{c.sal}}</td>
+                     <td> <button type="button" class="btn btn-danger" ng-click="delete()">delete</button>
+                      <button type="button" class="btn btn-primary" ng-click="view($index)">View</button>
+                      <button type="button" class="btn btn-primary" ng-click="edit($index)" data-toggle="modal" data-target="#myModal">edit</button></td>
+                </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+              </div>
+          
+    
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+    
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            
+            <b> Name:</b><br>
+            <input type="text" name="name" value=""ng-model="NAME">
+            <br>
+            <b>eId:</b><br>
+            <input type="text" name="eId" value=""ng-model="EID">
+            <br>
+            <b>Salary:</b><br>
+            <input type="text" name="Sal" value=""ng-model="SAL">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+   
+
+
+
+    <script src="./project_data.js"></script>
+    <script src="./project_controller.js"></script>
+
+
+</body>
+
+</html>
